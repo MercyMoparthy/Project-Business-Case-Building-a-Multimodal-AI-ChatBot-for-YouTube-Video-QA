@@ -1,0 +1,5 @@
+Metadata: 22 videos, 21 with valid metadata
+Transcripts: 22 videos, 0 missing
+Processed Chunks: 327
+Sample Chunk:
+hey folk Chris Thanky like welcome session plan great feature implement entire life take couple hour go probably 10 minute end implement actually incredibly easy new world AI agent LLM low code code flow designer ahead start show demo think incredible cool look right portfolio record service project management call service portfolio management idea portfolio underneath portfolio go thing like demand project issue project go status report ton ton info customer comment say project manager come
