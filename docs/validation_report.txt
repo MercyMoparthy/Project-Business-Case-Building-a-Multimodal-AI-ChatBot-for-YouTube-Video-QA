@@ -1,5 +1,5 @@
-Metadata: 22 videos, 21 with valid metadata
 Transcripts: 22 videos, 0 missing
-Processed Chunks: 327
+Processed Chunks: 328
 Sample Chunk:
-hey folk Chris Thanky like welcome session plan great feature implement entire life take couple hour go probably 10 minute end implement actually incredibly easy new world AI agent LLM low code code flow designer ahead start show demo think incredible cool look right portfolio record service project management call service portfolio management idea portfolio underneath portfolio go thing like demand project issue project go status report ton ton info customer comment say project manager come
+hey folk how you doing chris thanky here and id like to welcome you to this session where i plan to show you the greatest feature ive ever implemented in my entire life it only took me a couple hour im going to show it to you in probably about 10 minute and by the end of it you can implement it yourself because it is actually incredibly easy to do now that were in this new world of ai agent and llm in using our lowcode nocode flow designer so ill go ahead and well start by showing you the demo of just what it is and youll get to see why i think it is so incredible and cool so what were looking at right now is a portfolio record in service now we have project management were calling it service portfolio management a well but you have this idea of these portfolio then underneath these portfolio youre going to have thing like demand and project and issue and in those project youre going to have status report so it just this ton and ton of info and a customer comment they had said well
+Chunk Length Stats: Average=966.9, Min=53, Max=1000

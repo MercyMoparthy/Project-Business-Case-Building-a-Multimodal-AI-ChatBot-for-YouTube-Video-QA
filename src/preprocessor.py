@@ -1,8 +1,8 @@
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.config import CHUNK_SIZE, CHUNK_OVERLAP
-
-def clean_text(text):
-    return text.replace("\n", " ").strip()
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 def chunk_text(text):
     splitter = RecursiveCharacterTextSplitter(
