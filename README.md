@@ -1,4 +1,4 @@
-# 🤖 YouTube QA RAG Benchmark: Multi-LLM Evaluation
+# 🤖 Multimodal-AI-ChatBot-for-YouTube-Video-QA
 
 ## 📌 Overview
 
