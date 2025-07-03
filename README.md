@@ -6,20 +6,19 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ## 🚀 Key Features
 
-- **🎤 Audio & Transcript Extraction: Automated downloading, transcription (via Whisper), and cleaning of YouTube video audio.
-- **📚 Intelligent Chunking: Splitting transcripts into context-aware text chunks for more effective retrieval.
-- **🔎 RAG Pipeline: End-to-end system combining vector search (FAISS/Pinecone), retrieval, and generative QA.
-- **🤖 Multi-Model Evaluation: Compare DistilGPT2, Flan-T5, Mistral-7B, GPT-3.5-turbo, and others.
-- **📊 Metrics & Analysis: F1, ROUGE-L, and LLM-in-the-loop scoring for robust QA evaluation.
-- **📝 Ready-to-Use Jupyter Notebooks: Each step modularized and reproducible.
+- **🎤 Audio & Transcript Extraction:** Automated downloading, transcription (via Whisper), and cleaning of YouTube video audio.
+- **📚 Intelligent Chunking:** Splitting transcripts into context-aware text chunks for more effective retrieval.
+- **🔎 RAG Pipeline:** End-to-end system combining vector search (FAISS/Pinecone), retrieval, and generative QA.
+- **🤖 Multi-Model Evaluation:** Compare DistilGPT2, Flan-T5, Mistral-7B, GPT-3.5-turbo, and others.
+- **📊 Metrics & Analysis:** F1, ROUGE-L, and LLM-in-the-loop scoring for robust QA evaluation.
+- **📝 Ready-to-Use Jupyter Notebooks:** Each step modularized and reproducible.
 
 ## 🧩 Project Steps
 
 ### 1.  Data Acquisition & Preprocessing
-    #### 🎯 Objective
+    🎯 Objective
         Extract, transcribe, and clean audio from ServiceNow YouTube videos.
-    Notebooks:
-
+    #### Notebooks:
     - 01_metadata_with_transcripts.ipynb
     - 01b_audio_download_and_transcription.ipynb
 
