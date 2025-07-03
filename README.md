@@ -16,7 +16,7 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 ## 🧩 Project Steps
 
 ### 1.  Data Acquisition & Preprocessing
-    🎯 Objective
+    #### 🎯 Objective
         Extract, transcribe, and clean audio from ServiceNow YouTube videos.
     #### Notebooks:
     - 01_metadata_with_transcripts.ipynb
@@ -82,8 +82,11 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ## 📂 File Structure
     - /audio_files/ – YouTube video audio files
-    - /servicenow_audio_transcripts/ – Transcript files
-    - /notebooks/ – All major workflow and evaluation notebooks
+    - /Data/ – Metadata,Transcript and cleaned chunks files
+    - /faiss_store/ - Embedded and vectorized files
+    - /logs/ - chunk preview, project log and validation report files
+    - /notebooks/ – All finalized major workflow and evaluation notebooks
+    - /models/ - All test Models
     - /results/ – Model outputs, metrics, and evaluation CSVs
 
 ## 🤝 Acknowledgements
