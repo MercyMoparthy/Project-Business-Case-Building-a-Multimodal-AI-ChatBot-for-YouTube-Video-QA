@@ -6,20 +6,19 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ## 🚀 Key Features
 
-🎤 Audio & Transcript Extraction: Automated downloading, transcription (via Whisper), and cleaning of YouTube video audio.
-📚 Intelligent Chunking: Splitting transcripts into context-aware text chunks for more effective retrieval.
-🔎 RAG Pipeline: End-to-end system combining vector search (FAISS/Pinecone), retrieval, and generative QA.
-🤖 Multi-Model Evaluation: Compare DistilGPT2, Flan-T5, Mistral-7B, GPT-3.5-turbo, and others.
-📊 Metrics & Analysis: F1, ROUGE-L, and LLM-in-the-loop scoring for robust QA evaluation.
-📝 Ready-to-Use Jupyter Notebooks: Each step modularized and reproducible.
+- **🎤 Audio & Transcript Extraction:** Automated downloading, transcription (via Whisper), and cleaning of YouTube video audio.
+- **📚 Intelligent Chunking:** Splitting transcripts into context-aware text chunks for more effective retrieval.
+- **🔎 RAG Pipeline:** End-to-end system combining vector search (FAISS/Pinecone), retrieval, and generative QA.
+- **🤖 Multi-Model Evaluation:** Compare DistilGPT2, Flan-T5, Mistral-7B, GPT-3.5-turbo, and others.
+- **📊 Metrics & Analysis:** F1, ROUGE-L, and LLM-in-the-loop scoring for robust QA evaluation.
+- **📝 Ready-to-Use Jupyter Notebooks:** Each step modularized and reproducible.
 
 ## 🧩 Project Steps
 
 ### 1.  Data Acquisition & Preprocessing
-    #### 🎯 Objective
-    Extract, transcribe, and clean audio from ServiceNow YouTube videos.
-    Notebooks:
-
+    🎯 Objective
+        Extract, transcribe, and clean audio from ServiceNow YouTube videos.
+    #### Notebooks:
     - 01_metadata_with_transcripts.ipynb
     - 01b_audio_download_and_transcription.ipynb
 
@@ -31,7 +30,7 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ### 2.  Chunking, Embedding, and Vector Storage
     #### 🎯 Objective
-    Divide transcripts into semantic chunks and store embeddings for fast retrieval.
+        Divide transcripts into semantic chunks and store embeddings for fast retrieval.
 
    #### Workflow:
     - Chunk transcripts for better context and overlap.
@@ -49,7 +48,7 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ### 4.  Multi-Model Answer Generation & Evaluation
     #### 🎯 Objective
-    Benchmark different LLMs for QA answer quality.
+        Benchmark different LLMs for QA answer quality.
 
     #### LLMs Benchmarked:
     - DistilGPT2
@@ -59,13 +58,11 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
     - GPT-3.5-turbo (via OpenAI API)
 
     #### Evaluation Metrics:
-
     - Token-level F1 (exact word overlap)
     - LLM-as-a-Judge (use GPT-3.5/4 to rate factual correctness and completeness)
     - Manual inspection for qualitative insights
 
     #### 🛠️ Tech Stack
-
     - Python (pandas, numpy, sklearn, matplotlib)
     - Hugging Face Transformers (DistilGPT2, Flan-T5, etc.)
     - Whisper (for audio transcription)
@@ -74,26 +71,22 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
     - Jupyter Notebooks
 
     #### 📈 Results & Insights
-
     - Chunk-based retrieval dramatically improves LLM QA accuracy over raw transcripts.
     - Flan-T5 models achieved highest F1/ROUGE on strict metrics, but Mistral-7B delivered the most robust, human-like answers (per manual and LLM-based review).
     - Automated metrics can undervalue models that paraphrase or elaborate; LLM-in-the-loop and human analysis are essential for fair evaluation.
     
 ## 🔍 Observations
-
     - F1 and ROUGE are useful but insufficient for open-ended QA evaluation; they miss high-quality paraphrasing and extra context.
     - Mistral-7B’s answers often scored lower on F1 but excelled in factuality and completeness when checked by LLMs or humans.
     - Multi-metric and LLM-as-a-judge evaluation is recommended for any serious RAG QA benchmark.
 
 ## 📂 File Structure
-
     - /audio_files/ – YouTube video audio files
     - /servicenow_audio_transcripts/ – Transcript files
     - /notebooks/ – All major workflow and evaluation notebooks
     - /results/ – Model outputs, metrics, and evaluation CSVs
 
 ## 🤝 Acknowledgements
-
     - ServiceNow (YouTube data)
     - Hugging Face, OpenAI, Together.ai for open models and APIs
     - Community notebooks and repos for RAG and LLM evaluation
