@@ -15,29 +15,34 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ## 🧩 Project Steps
 
-### 1.  Data Acquisition & Preprocessing
+### 1. Data Acquisition & Preprocessing
+
     #### 🎯 Objective
         Extract, transcribe, and clean audio from ServiceNow YouTube videos.
     #### Notebooks:
     - 01_metadata_with_transcripts.ipynb
     - 01b_audio_download_and_transcription.ipynb
 
-   ####  Workflow:
+#### Workflow:
+
     - Gather video metadata and links from YouTube.
     - Download audio and transcribe using OpenAI Whisper.
     - Clean and structure transcript data.
     - Save as chunked CSVs for embedding.
 
-### 2.  Chunking, Embedding, and Vector Storage
+### 2. Chunking, Embedding, and Vector Storage
+
     #### 🎯 Objective
         Divide transcripts into semantic chunks and store embeddings for fast retrieval.
 
-   #### Workflow:
+#### Workflow:
+
     - Chunk transcripts for better context and overlap.
     - Generate embeddings (OpenAI, Sentence Transformers, etc).
     - Store in FAISS or Pinecone for fast similarity search.
 
-### 3.  Retrieval-Augmented QA Pipeline
+### 3. Retrieval-Augmented QA Pipeline
+
     #### 🎯 Objective
     Implement RAG to answer questions about videos using chunk retrieval and LLMs.
 
@@ -46,7 +51,8 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
     - Retrieve relevant transcript chunks via vector similarity.
     - Pass context + query to various LLMs for answer generation.
 
-### 4.  Multi-Model Answer Generation & Evaluation
+### 4. Multi-Model Answer Generation & Evaluation
+
     #### 🎯 Objective
         Benchmark different LLMs for QA answer quality.
 
@@ -74,22 +80,53 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
     - Chunk-based retrieval dramatically improves LLM QA accuracy over raw transcripts.
     - Flan-T5 models achieved highest F1/ROUGE on strict metrics, but Mistral-7B delivered the most robust, human-like answers (per manual and LLM-based review).
     - Automated metrics can undervalue models that paraphrase or elaborate; LLM-in-the-loop and human analysis are essential for fair evaluation.
-    
+
 ## 🔍 Observations
+
     - F1 and ROUGE are useful but insufficient for open-ended QA evaluation; they miss high-quality paraphrasing and extra context.
     - Mistral-7B’s answers often scored lower on F1 but excelled in factuality and completeness when checked by LLMs or humans.
     - Multi-metric and LLM-as-a-judge evaluation is recommended for any serious RAG QA benchmark.
 
 ## 📂 File Structure
-    - /audio_files/ – YouTube video audio files
+
+    - /audio/ – YouTube video audio files
+        - /audio_files/ - Audio Files of Youtube Videos
+        - /ServiceNow_Audio_Transcripts/ - Audio Files Transcriptions
     - /Data/ – Metadata,Transcript and cleaned chunks files
+        - /SNOW_YT_Videos.csv/ - Main DataSet consists of 22 Youtube Video Links
+        - /ServiceNow_Youtube_Metadata_Clean.csv/ - Metadata of Main Youtube Videos Dataset
+        - /video_metadata_with_transcripts.csv/ - Transcripts from Metadata of Main Youtube Videos
+        - /processed_transcripts.csv/ - Preprocessed Transcriptions
+        - /processed_cleaned_chunks.csv/ - Cleaned Chunks from Preprocessed Transcriptions
     - /faiss_store/ - Embedded and vectorized files
+        - /index.faiss/
+        - /index.pkl/
     - /logs/ - chunk preview, project log and validation report files
+        - /chunk_previews.txt/
+        - /project_log.md/
+        - /validation_report.txt/
     - /notebooks/ – All finalized major workflow and evaluation notebooks
-    - /models/ - All test Models
+        - /01_data_metadata_exploration.ipynb/ - Downloading Metadata from Youtube Videos
+        - /02_data_preprocessing_transcript_chunk.ipynb/ - Data Preprocessing, Cleaning and Chunking
+        - /3b_model_test_mistral7B.ipynb/ - Mistral Model Generation for Text prompt Engineering
+        - /04_whisper_without_Agent.ipynb/ - Whisper Model Generation for Audio to Text Prompt Engineeering without LangChain Agents
+        - /05_whisper_with_Agent_deploy.ipynb/ - Whisper Model Generation with LangChain Agents - **GRADIO DEPLOYMENT** Included
+        - /06_rag_with_sources.ipynb/ - LLM OPenAI model to generate Answers with Source Snippets
+        - /07_ QA_Calls_for_Evaluation.ipynb/ - Evaluations on all the Models used in this project
+        - /08_deployment_gradio_test.ipynb/ - **GRADIO DEPLOYMENT without AGENT**
+        - /09_matplot_evaluations.ipynb/ - Plots and Charts for this project
+    - /Sample Models/ - All test Models
+        - /03a_model_test_distilgpt2.ipynb/
+        - /3c_model_test_flan-t5-base.ipynb/
+        - /3d_model_test_flan-t5-large.ipynb/
     - /results/ – Model outputs, metrics, and evaluation CSVs
+        - /all_model_eval_results.csv/ - Details from Evaluation notebook
+        - /model_outputs.csv/- Details from each notebook individually
+    - /requirements.txt/
+    - /Multimodal AI Chatbot for YouTube Video QA.pptx/
 
 ## 🤝 Acknowledgements
+
     - ServiceNow (YouTube data)
-    - Hugging Face, OpenAI, Together.ai for open models and APIs
+    - Hugging Face, OpenAI, Together.ai, HuggingFace for open models and APIs
     - Community notebooks and repos for RAG and LLM evaluation
