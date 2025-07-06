@@ -16,8 +16,7 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 ## 🧩 Project Steps
 
 ### 1. Data Acquisition & Preprocessing
-
-    🎯 Objective
+#### 🎯 Objective
         Extract, transcribe, and clean audio from ServiceNow YouTube videos.
     Notebooks:
     - 01_metadata_with_transcripts.ipynb
@@ -31,8 +30,7 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
     - Save as chunked CSVs for embedding.
 
 ### 2. Chunking, Embedding, and Vector Storage
-
-    🎯 Objective
+#### 🎯 Objective
         Divide transcripts into semantic chunks and store embeddings for fast retrieval.
 
 #### Workflow:
@@ -43,40 +41,61 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ### 3. Retrieval-Augmented QA Pipeline
 
-    🎯 Objective
+#### 🎯 Objective
     Implement RAG to answer questions about videos using chunk retrieval and LLMs.
 
-    Workflow:
+#### Workflow:
     - Accept audio or text queries.
     - Retrieve relevant transcript chunks via vector similarity.
     - Pass context + query to various LLMs for answer generation.
 
 ### 4. Multi-Model Answer Generation & Evaluation
 
-    🎯 Objective
+#### 🎯 Objective
         Benchmark different LLMs for QA answer quality.
 
-    LLMs Benchmarked:
+#### LLMs Benchmarked:
     - DistilGPT2
     - Flan-T5-base
     - Flan-T5-large
     - Mistral-7B-Instruct (via Together.ai and HuggingFace)
     - GPT-3.5-turbo (via OpenAI API)
+    - Whisper without Agents
+    - Whisper with Agents
 
-    Evaluation Metrics:
+#### Evaluation Metrics:
     - Token-level F1 (exact word overlap)
     - LLM-as-a-Judge (use GPT-3.5/4 to rate factual correctness and completeness)
     - Manual inspection for qualitative insights
+    - Rouge, Exact match and Bleu for individual models
 
-    🛠️ Tech Stack
-    - Python (pandas, numpy, sklearn, matplotlib)
-    - Hugging Face Transformers (DistilGPT2, Flan-T5, etc.)
-    - Whisper (for audio transcription)
-    - FAISS / Pinecone (vector database)
-    - OpenAI, HuggingFace & Together.ai APIs
-    - Jupyter Notebooks
+#### 🛠️ Tech Stack
+* **Programming Language:**
+  * Python 3.x
+* **Core Libraries & Frameworks:**
+  * **pandas, numpy** — Data manipulation and analysis
+  * **scikit-learn** — Machine learning utilities and evaluation
+  * **matplotlib** — Data visualization
+  * **Jupyter Notebooks** — Interactive development and documentation
+* **Large Language Models & Frameworks:**
+  * **Hugging Face Transformers:** - Pretrained and finetuned models (e.g., DistilGPT2, Flan-T5)
+  * **OpenAI GPT API** — LLM-based generation and QA
+  * **Together.ai API** — For alternative LLM endpoints
+  * **Audio Processing:** - Whisper (OpenAI Whisper ASR via Hugging Face/transformers) — Automatic speech recognition for audio-to-text transcription
+* **Retrieval-Augmented Generation (RAG):**
+  * **LangChain** — Building and orchestrating RAG pipelines
+  * **LangSmith** — Workflow tracking, evaluation, and dashboarding
+* **Embeddings & Vector Stores:**
+  * **Sentence Transformers or Hugging Face Embedding models** — Text embedding
+  * **FAISS** — Local vector database for similarity search
+  * **Pinecone** — Managed vector database (optional/integrated for scalability)
+* **APIs & Integrations:**
+  * **OpenAI, Hugging Face, Together.ai APIs** — Model inference, embedding, and transcription services
+* **Development Environments:**
+  * **VS Code** — Code development
+  * **Google Colab** — Cloud-based notebook execution and prototyping
 
-    📈 Results & Insights
+#### 📈 Results & Insights
     - Chunk-based retrieval dramatically improves LLM QA accuracy over raw transcripts.
     - Flan-T5 models achieved highest F1/ROUGE on strict metrics, but Mistral-7B delivered the most robust, human-like answers (per manual and LLM-based review).
     - Automated metrics can undervalue models that paraphrase or elaborate; LLM-in-the-loop and human analysis are essential for fair evaluation.
@@ -85,48 +104,60 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
     - F1 and ROUGE are useful but insufficient for open-ended QA evaluation; they miss high-quality paraphrasing and extra context.
     - Mistral-7B’s answers often scored lower on F1 but excelled in factuality and completeness when checked by LLMs or humans.
+    - Whisper model with Agent excelled in factuality and completeness compared to without Agent
     - Multi-metric and LLM-as-a-judge evaluation is recommended for any serious RAG QA benchmark.
 
-## 📂 File Structure
+## 📂 Repository Structure
+        Project-Business-Case-Building-a-Multimodal-AI-ChatBot-for-YouTube-Video-QA/
+        │ audio                                            # Audio-related resources
+        │   ├── audio_files                                # Raw YouTube video audio files
+        │   └── ServiceNow_Audio_Transcripts               # Transcriptions of audio files
+        │
+        │ Data                                             # Data and processed files
+        │   ├── SNOW_YT_Videos.csv                         # Main dataset: 22 YouTube video links
+        │   ├── ServiceNow_Youtube_Metadata_Clean.csv      # Cleaned metadata for YouTube videos
+        │   ├── video_metadata_with_transcripts.csv        # Combined metadata and transcripts
+        │   ├── processed_transcripts.csv                  # Preprocessed transcriptions
+        │   └── processed_cleaned_chunks.csv               # Cleaned transcript chunks
+        │
+        │ faiss_store                                      # FAISS vector store
+        │   ├── index.faiss
+        │   └── index.pkl
+        │
+        │ logs                                             # Logs and validation reports
+        │  ├── chunk_previews.txt
+        │  ├── project_log.md
+        │  └── validation_report.txt
+        │
+        │ notebooks                                        # Finalized workflow notebooks
+        │  ├── 01_data_metadata_exploration.ipynb
+        │  ├── 02_data_preprocessing_transcript_chunk.ipynb
+        │  ├── 03b_model_test_mistral7B.ipynb
+        │  ├── 04_whisper_without_Agent.ipynb             
+        │  ├── 05_whisper_with_Agent_deploy.ipynb          # DEPLOYMENT with AGENT
+        │  ├── 06_rag_with_sources.ipynb
+        │  ├── 07_QA_Calls_for_Evaluation.ipynb
+        │  ├── 08_deployment_gradio_test.ipynb             # DEPLOYMENT without AGENT
+        │  └── 09_matplot_evaluations.ipynb
+        │
+        │ Sample_Models                                    # Prototype/test model notebooks
+        │  ├── 03a_model_test_distilgpt2.ipynb
+        │  ├── 03c_model_test_flan-t5-base.ipynb
+        │  └── 03d_model_test_flan-t5-large.ipynb
+        │
+        │/results/                                         # Model outputs and evaluation CSVs
+        │  ├── all_model_eval_results.csv
+        │  └── model_outputs.csv
+        │
+        │ requirements.txt                                 # Project dependencies
+        │ Multimodal AI Chatbot for YouTube Video QA.pptx  # Project presentation
 
-    - **audio** – YouTube video audio files
-        - **/audio_files/**- Audio Files of Youtube Videos
-        - /ServiceNow_Audio_Transcripts/ - Audio Files Transcriptions
-    - /Data/ – Metadata,Transcript and cleaned chunks files
-        - /SNOW_YT_Videos.csv/ - Main DataSet consists of 22 Youtube Video Links
-        - /ServiceNow_Youtube_Metadata_Clean.csv/ - Metadata of Main Youtube Videos Dataset
-        - /video_metadata_with_transcripts.csv/ - Transcripts from Metadata of Main Youtube Videos
-        - /processed_transcripts.csv/ - Preprocessed Transcriptions
-        - /processed_cleaned_chunks.csv/ - Cleaned Chunks from Preprocessed Transcriptions
-    - /faiss_store/ - Embedded and vectorized files
-        - /index.faiss/
-        - /index.pkl/
-    - /logs/ - chunk preview, project log and validation report files
-        - /chunk_previews.txt/
-        - /project_log.md/
-        - /validation_report.txt/
-    - /notebooks/ – All finalized major workflow and evaluation notebooks
-        - /01_data_metadata_exploration.ipynb/ - Downloading Metadata from Youtube Videos
-        - /02_data_preprocessing_transcript_chunk.ipynb/ - Data Preprocessing, Cleaning and Chunking
-        - /3b_model_test_mistral7B.ipynb/ - Mistral Model Generation for Text prompt Engineering
-        - /04_whisper_without_Agent.ipynb/ - Whisper Model Generation for Audio to Text Prompt Engineeering without LangChain Agents
-        - /05_whisper_with_Agent_deploy.ipynb/ - Whisper Model Generation with LangChain Agents - **GRADIO DEPLOYMENT** Included
-        - /06_rag_with_sources.ipynb/ - LLM OPenAI model to generate Answers with Source Snippets
-        - /07_ QA_Calls_for_Evaluation.ipynb/ - Evaluations on all the Models used in this project
-        - /08_deployment_gradio_test.ipynb/ - **GRADIO DEPLOYMENT without AGENT**
-        - /09_matplot_evaluations.ipynb/ - Plots and Charts for this project
-    - /Sample Models/ - All test Models
-        - /03a_model_test_distilgpt2.ipynb/
-        - /3c_model_test_flan-t5-base.ipynb/
-        - /3d_model_test_flan-t5-large.ipynb/
-    - /results/ – Model outputs, metrics, and evaluation CSVs
-        - /all_model_eval_results.csv/ - Details from Evaluation notebook
-        - /model_outputs.csv/- Details from each notebook individually
-    - /requirements.txt/
-    - /Multimodal AI Chatbot for YouTube Video QA.pptx/
 
 ## 🤝 Acknowledgements
 
-    - ServiceNow (YouTube data)
-    - Hugging Face, OpenAI, Together.ai, HuggingFace for open models and APIs
-    - Community notebooks and repos for RAG and LLM evaluation
+* **ServiceNow** — For providing the valuable YouTube video content and data that formed the backbone of this project.
+* **Hugging Face, OpenAI, and Together.ai** — For access to powerful open-source language models, APIs, and supporting tools that enabled advanced natural language understanding and generation.
+* **Hugging Face Transformers & Datasets** — For the libraries and resources that accelerated the development and experimentation of model architectures and pipelines.
+* **LangChain & LangSmith** — For their modular frameworks and insightful dashboards that streamlined the implementation and evaluation of retrieval-augmented generation (RAG) workflow
+* **Google Colab & Visual Studio Code (VS Code)** — For flexible, collaborative, and scalable development environments throughout all project phases.
+* **Community Resources & Open Notebooks** — For inspiration, reusable code snippets, and best practices shared by the open-source AI and ML community, especially in RAG, LLM evaluation, and multimodal workflows.
