@@ -17,9 +17,9 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ### 1. Data Acquisition & Preprocessing
 
-    #### 🎯 Objective
+    🎯 Objective
         Extract, transcribe, and clean audio from ServiceNow YouTube videos.
-    #### Notebooks:
+    Notebooks:
     - 01_metadata_with_transcripts.ipynb
     - 01b_audio_download_and_transcription.ipynb
 
@@ -32,7 +32,7 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ### 2. Chunking, Embedding, and Vector Storage
 
-    #### 🎯 Objective
+    🎯 Objective
         Divide transcripts into semantic chunks and store embeddings for fast retrieval.
 
 #### Workflow:
@@ -43,32 +43,32 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ### 3. Retrieval-Augmented QA Pipeline
 
-    #### 🎯 Objective
+    🎯 Objective
     Implement RAG to answer questions about videos using chunk retrieval and LLMs.
 
-    #### Workflow:
+    Workflow:
     - Accept audio or text queries.
     - Retrieve relevant transcript chunks via vector similarity.
     - Pass context + query to various LLMs for answer generation.
 
 ### 4. Multi-Model Answer Generation & Evaluation
 
-    #### 🎯 Objective
+    🎯 Objective
         Benchmark different LLMs for QA answer quality.
 
-    #### LLMs Benchmarked:
+    LLMs Benchmarked:
     - DistilGPT2
     - Flan-T5-base
     - Flan-T5-large
     - Mistral-7B-Instruct (via Together.ai and HuggingFace)
     - GPT-3.5-turbo (via OpenAI API)
 
-    #### Evaluation Metrics:
+    Evaluation Metrics:
     - Token-level F1 (exact word overlap)
     - LLM-as-a-Judge (use GPT-3.5/4 to rate factual correctness and completeness)
     - Manual inspection for qualitative insights
 
-    #### 🛠️ Tech Stack
+    🛠️ Tech Stack
     - Python (pandas, numpy, sklearn, matplotlib)
     - Hugging Face Transformers (DistilGPT2, Flan-T5, etc.)
     - Whisper (for audio transcription)
@@ -76,7 +76,7 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
     - OpenAI, HuggingFace & Together.ai APIs
     - Jupyter Notebooks
 
-    #### 📈 Results & Insights
+    📈 Results & Insights
     - Chunk-based retrieval dramatically improves LLM QA accuracy over raw transcripts.
     - Flan-T5 models achieved highest F1/ROUGE on strict metrics, but Mistral-7B delivered the most robust, human-like answers (per manual and LLM-based review).
     - Automated metrics can undervalue models that paraphrase or elaborate; LLM-in-the-loop and human analysis are essential for fair evaluation.
@@ -89,8 +89,8 @@ This project develops and evaluates a Retrieval-Augmented Generation (RAG) syste
 
 ## 📂 File Structure
 
-    - /audio/ – YouTube video audio files
-        - /audio_files/ - Audio Files of Youtube Videos
+    - **audio** – YouTube video audio files
+        - **/audio_files/**- Audio Files of Youtube Videos
         - /ServiceNow_Audio_Transcripts/ - Audio Files Transcriptions
     - /Data/ – Metadata,Transcript and cleaned chunks files
         - /SNOW_YT_Videos.csv/ - Main DataSet consists of 22 Youtube Video Links
